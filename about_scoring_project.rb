@@ -32,22 +32,74 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 def score(dice)
   scores = Array.new
 
+  #Score three equal numbers
+
+  #Last numbers
+
+    if dice[4] != nil
+    if dice[2] == dice[3] && dice[4] == dice[3]
+      if dice[4] == 1
+        scores.push 700
+      elsif dice[4] == 5
+        scores.push 350
+      else
+        scores.push(dice[4]*100)
+      end    
+    end  
+  end
+
+  if scores.sum == 0
+
+    #Three middle numbers
+
+      if dice[3] != nil
+      if dice[1] == dice[2] && dice[3] == dice[2]
+        if dice[3] == 1
+          scores.push 700
+        elsif dice[3] == 5
+          scores.push 350
+        else
+          scores.push(dice[2]*100)
+        end    
+      end  
+    end
+
+    if scores.sum == 0
+
+      #First three numbers
+
+      if dice[2] != nil
+        if dice[0] == dice[1] && dice[2] == dice[1]
+          if dice[2] == 1
+            scores.push 700
+          elsif dice[2] == 5
+            scores.push 350
+          else
+            scores.push(dice[2]*100)
+          end    
+        end  
+      end
+    else
+    end    
+  
+  else
+  end    
+
   #score of number 1
   dice.each do |number|
     if number == 1
-      scores.push 100
+      scores.push(100)
     end
   end
   
   #score of number 5
   dice.each do |number|
     if number == 5
-      scores.push 50
+      scores.push(50)
     end
   end
 
   return scores.sum
-
 
 end
 
