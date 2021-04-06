@@ -31,6 +31,7 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 def score(dice)
   scores = Array.new
+  dice = dice.sort
 
   #Score three equal numbers
 
